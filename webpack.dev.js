@@ -9,7 +9,7 @@ module.exports = merge(common, {
     static: './build',
   },
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "build"),
     clean: true,
   },
