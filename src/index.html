@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+  <div id="app">
+    <!-- Scrollable container for the book cards -->
+    <div id="libraryContainer" class="library-container">
+      <div class="test-element"></div>
+    </div>
+    <div class="add-book-container">
+      <button class="add-book-button">+</button>
+      <form id="addBookForm" name="add-book-form" onsubmit="return;" autocomplete="off" class="hidden">
+        <label for="bookNameField">Name</label>
+        <input type="text" name="bookNameField" id="bookNameField" required>
+        <label for="bookAuthorField">Author</label>
+        <input type="text" name="bookAuthorField" id="bookAuthorField" required>
+        <label for="bookPageCountField">Page Count</label>
+        <input type="text" name="bookPageCountField" id="bookPageCountField" required>
+        <label for="bookReadRadioButton">Read?</label>
+        <input type="checkbox" name="bookReadRadioButton" id="bookReadRadioButton">
+        <button class="add-book-button">Add Book</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
