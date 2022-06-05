@@ -1,6 +1,14 @@
 import "./styles/main.scss"
 import Book from "./book.js";
 
+const VALID_STATES = {
+  "idle": true,
+  "editing": true,
+  "adding": true,
+};
+let state = "idle";
+
+
 const library = [
   new Book("Common Sense Manual", "Naseer R.", 1, false),
   new Book("Apex Guide", "Captain Po", 100, true),

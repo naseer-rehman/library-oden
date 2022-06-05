@@ -1,14 +1,36 @@
+@use "sass:math";
+
+$input-bg-color: rgb(235, 235, 235);
+$text-color: rgb(100,100,100);
+$input-text-color: rgb(100,100,100);
+$label-text-color: darken($input-bg-color, 30%);
+$label-focused-text-color: darken($input-bg-color, 60%);
+
+@mixin bottom-center() {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .add-book-container {
   position: absolute;
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  align-items: flex-end;
+  overflow: visible;
   justify-content: center;
+  width: max(20%, 220px);
 }
 
-.add-book-button {
+.add-book-open-button {
+  @include bottom-center;
   aspect-ratio: 1;
   width: 74px;
   height: auto;
@@ -16,4 +38,166 @@
   color: rgb(175,175,175);
 }
 
+.add-book-form {
+  @include bottom-center;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.16);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  position: relative;
+  font-size: 1.25rem;
 
+  > * {
+    margin-bottom: 1rem;
+  }
+
+  > *:last-child {
+    margin: 0;
+  }
+}
+
+.add-book-form .text-input-container {
+  position: relative;
+  $bg-color: rgb(246, 246, 246);
+  background-color: $input-bg-color;
+  border-radius: 10px;
+  height: 45px;
+
+  > * {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    @include top-left;
+  }
+  
+  > input {
+    color: $text-color;
+    z-index: 1;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0.25rem 0.5rem;
+  }
+
+  > label {
+    z-index: 0;
+    left: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $label-text-color;
+  }
+  
+  > input:focus + label, input:not(:placeholder-shown) + label {
+    color: $label-focused-text-color;
+    top: 0;
+    font-size: 0.8rem;
+  }
+}
+
+.add-book-form .checkbox-input-container {
+  display: flex;
+  align-items: center;
+
+  > label {
+    color: $label-text-color;
+  }
+
+  > input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    background: darken($input-bg-color, 0%);
+    width: 30px;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 8px;
+  }
+
+  > input[type="checkbox"]::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    background-color: black;
+    border-radius: 6px;
+    display: none;
+  }
+
+  > input[type="checkbox"]:hover, label:hover {
+    cursor: pointer;
+  }
+
+  > input[type="checkbox"]:hover {
+    background: darken($input-bg-color, 10%);
+  }
+
+  > input[type="checkbox"]:hover:not(:checked)::after {
+    display: inline-block;
+    background-color: darken($input-bg-color, 5%);
+  }
+
+  > input[type="checkbox"]:checked::after {
+    display: inline-block;
+    background-color: #cfffe7;
+  }
+}
+
+.add-book-form > .input-pair-container {
+  display: flex;
+  justify-content: space-between;
+
+  > .text-input-container {
+    margin: 0;
+    width: 30%;
+  }
+}
+
+.add-book-form > .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container { 
+  > button {
+    width: 110px;
+    height: 35px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: none;
+    font-size: 1.25rem;
+    --color: #{$label-text-color};
+    --hover-color: #{darken($label-text-color, 5%)};
+    --bg-color: #{$input-bg-color};
+    --hover-bg-color: #{darken($input-bg-color, 5%)};
+    color: var(--color);
+    background: var(--bg-color);
+  }
+  
+  > button:hover {
+    background: var(--hover-bg-color);
+    color: var(--hover-color);
+  }
+
+  > button.add-book-submit-button {
+    $base-color: #e1fee2;
+    --color: #{darken($base-color, 20%)};
+    --hover-color: #{darken($base-color, 20%)};
+    --bg-color: #{$base-color};
+    --hover-bg-color: #{darken($base-color, 5%)};
+  }
+
+  > button.add-book-cancel-button {
+    $base-color: #ffeded;
+    --color: #{darken($base-color, 15%)};
+    --hover-color: #{darken($base-color, 20%)};
+    --bg-color: #{$base-color};
+    --hover-bg-color: #{darken($base-color, 5%)};
+  }
+}

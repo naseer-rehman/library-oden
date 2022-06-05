@@ -8,6 +8,7 @@ $font-stack: arial;
 :root {
   --button-background-color: white;
   --button-hover-background-color: rgb(235,235,235);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {
@@ -44,7 +45,11 @@ button:hover {
 
 .test-element {
   display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: rgba(100,255,100,0.5);
   width: 500px;
   height: 500px;
+  z-index: -1;
 }

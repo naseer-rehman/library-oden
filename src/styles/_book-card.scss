@@ -1,1 +1,25 @@
 
+.book-card {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 420px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.16);
+  border-radius: 18px;
+  padding: 15px;
+  color: #7D7D7D;
+
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  > .title-container {
+    text-align: center;
+  }
+
+  .book-title {
+    font-size: 29px;
+  }
+}
+
