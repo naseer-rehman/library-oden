@@ -3,8 +3,17 @@ function createBookDOMObject() {
 }
 
 export default class BookCard {
-  constructor() {
+  constructor(book) {
+    this.book = book;
     this.domObject = null;
     console.log("Created a BookCard!");
+  }
+
+  insertDOM() {
+
+  }
+
+  deleteDOM() {
+    
   }
 };

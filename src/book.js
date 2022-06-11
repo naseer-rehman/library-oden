@@ -44,4 +44,8 @@ export default class Book {
   setRead(read) {
     this.read = read;
   }
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 };

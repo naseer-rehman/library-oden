@@ -2,12 +2,11 @@ import "./styles/main.scss"
 import Book from "./book.js";
 
 const VALID_STATES = {
-  "idle": true,
-  "editing": true,
-  "adding": true,
+  "idle": 1,
+  "editing": 2,
+  "adding": 3,
 };
-let state = "idle";
-
+let state = VALID_STATES.idle;
 
 const library = [
   new Book("Common Sense Manual", "Naseer R.", 1, false),
@@ -21,7 +20,7 @@ function onAddBook() {
 }
 
 function removeBook() {
-
+  
 }
 
 function renderLibrary() {

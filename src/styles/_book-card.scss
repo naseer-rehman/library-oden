@@ -1,17 +1,28 @@
 
 .book-card {
+  $button-bg-color: #eaeaea;
+  $del-button-bg-color: #fdcaca;
+  $font-size: 20px;
+  $font-color: #7D7D7D;
+  $button-font-color: lighten($font-color, 25%);
   display: inline-block;
   box-sizing: border-box;
-  width: 420px;
-  background-color: white;
+  min-width: 350px;
+  background-color: darken(white, 3%);
   box-shadow: 0 4px 6px rgba(0,0,0,0.16);
   border-radius: 18px;
   padding: 15px;
-  color: #7D7D7D;
+  color: $font-color;
+  font-size: $font-size;
+
+  > div:not(:last-child) {
+    margin-bottom: 15px;
+  }
 
   .space-between {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   > .title-container {
@@ -21,5 +32,71 @@
   .book-title {
     font-size: 29px;
   }
-}
 
+  .finished-container {
+    display: flex;
+    align-items: center;
+
+    > .finished-label {
+      margin-right: 10px;
+    }
+  }
+
+  .del-edit-buttons-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .finished-checkbox {
+    position: relative;
+    display: inline-block;
+    aspect-ratio: 1;
+    width: 35px;
+    height: auto;
+    background-color: $button-bg-color;
+    border-radius: 99999vw;
+
+    &[data-value="true"]::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: darken(#e9ffe7, 2.5%);
+      width: 75%;
+      height: 75%;
+      border-radius: 99999vw;
+    }
+  }
+
+  button {
+    box-shadow: none;
+    background-color: $button-bg-color;
+    color: $button-font-color;
+
+    &:hover {
+      background-color: darken($button-bg-color, 5%);
+    }
+
+    &.edit-button {
+      height: 45px;
+      width: 110px;
+      font-size: $font-size;
+      color: darken($button-bg-color, 25%);
+    }
+
+    &.del-button {
+      background-color: $del-button-bg-color;
+      border-radius: 99999vw;
+      aspect-ratio: 1;
+      height: 35px;
+      width: auto;
+      margin-right: 10px;
+      color: darken($del-button-bg-color, 10%);
+
+      &:hover {
+        background-color: darken($del-button-bg-color, 5%);
+      }
+    }
+  }
+}

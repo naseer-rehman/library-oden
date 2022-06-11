@@ -8,6 +8,7 @@ $font-stack: arial;
 :root {
   --button-background-color: white;
   --button-hover-background-color: rgb(235,235,235);
+  --font-color: #7D7D7D;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -21,7 +22,11 @@ body {
 }
 
 button {
+  appearance: none;
+  font-family: $font-stack;
+  color: var(--font-color);
   border: none;
+  padding: 0;
   background: none;
   background-color: var(--button-background-color);
   box-shadow: 0 4px 6px rgba(0,0,0,0.16);
