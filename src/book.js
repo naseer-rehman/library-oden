@@ -1,10 +1,17 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default class Book {
-  constructor(title, author, pages, read) {
+  /**
+   * Constructs a new Book with the given properties.
+   * @param {string} title 
+   * @param {string} author 
+   * @param {Integer} pageCount 
+   * @param {boolean} read 
+   */
+  constructor(title, author, pageCount, read) {
     this.author = author;
     this.title = title;
-    this.pages = pages;
+    this.pageCount = pageCount;
     this.read = read;
     this.id = uuidv4();
   }
@@ -21,11 +28,11 @@ export default class Book {
     return this.title;
   }
 
-  getPages() {
-    return this.pages;
+  getPageCount() {
+    return this.pageCount;
   }
 
-  isRead() {
+  hasRead() {
     return this.read;
   }
 
@@ -37,8 +44,8 @@ export default class Book {
     this.title = newTitle;
   }
 
-  setPages(newPages) {
-    this.pages = newPages;
+  setPageCount(newPages) {
+    this.pageCount = newPages;
   }
 
   setRead(read) {

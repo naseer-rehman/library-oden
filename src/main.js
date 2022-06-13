@@ -1,5 +1,6 @@
 import "./styles/main.scss"
-import Book from "./book.js";
+import LibraryController from "./libraryController";
+import LibraryView from "./libraryView";
 
 const VALID_STATES = {
   "idle": 1,
@@ -8,35 +9,27 @@ const VALID_STATES = {
 };
 let state = VALID_STATES.idle;
 
-const library = [
-  new Book("Common Sense Manual", "Naseer R.", 1, false),
-  new Book("Apex Guide", "Captain Po", 100, true),
-  new Book("Random Book", "muna", 1000, false),
-  new Book("Big Book", "muna", 99999, true),
-];
-
-function onAddBook() {
-
-}
-
-function removeBook() {
-  
-}
-
-function renderLibrary() {
-  // Clear existing cards (i know it's not optimal but whatever right)
-  const libraryContainer = document.getElementById("libraryContainer");
-
-  // Add in new "cards" for each book
-  for (let i = 0; i < library.length; ++i) {
-    console.log(library[i].getID());
-    const bookCard = document.createElement("div");
-    bookCard.classList.add("book-card");
+async function main() {
+  let loaded = false;
+  let loadedFunction = (resolve, reject) => {
+    if (!loaded) {
+      loaded = true;
+      resolve("It's loaded!");
+      window.removeEventListener("load", loadedFunction);
+    }
+  };
+  await new Promise(loadedFunction);
+  const initialBookProperties = [
+    {title: "Common Sense Manual", author: "Naseer R.", pageCount: 1, hasRead: false},
+    {title: "Apex Guide", author: "Captain Po", pageCount: 100, hasRead: true},
+    {title: "Random Book", author: "muna", pageCount: 1000, hasRead: false},
+    {title: "Big Book", author: "muna", pageCount: 99999, hasRead: true}
+  ];
+  LibraryView.register(LibraryController);
+  for (let i = 0; i < initialBookProperties.length; ++i) {
+    const bookProperties = initialBookProperties[i];
+    LibraryController.addBook(bookProperties);
   }
-}
-
-function main() {
-  // renderLibrary();
 }
 
 main();
