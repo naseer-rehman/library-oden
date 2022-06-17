@@ -26,6 +26,7 @@ async function main() {
     {title: "Big Book", author: "muna", pageCount: 99999, hasRead: true}
   ];
   LibraryView.register(LibraryController);
+  LibraryView.init();
   for (let i = 0; i < initialBookProperties.length; ++i) {
     const bookProperties = initialBookProperties[i];
     LibraryController.addBook(bookProperties);

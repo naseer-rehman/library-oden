@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="add-book-container">
-      <button class="add-book-open-button">+</button>
+      <button id="openFormButton" class="add-book-open-button">+</button>
       <form id="addBookForm" name="add-book-form" onsubmit="return false;" autocomplete="off" class="add-book-form hidden">
         <div class="text-input-container">
           <input type="text" name="bookNameField" placeholder=" " id="bookNameField" required>
@@ -43,11 +43,11 @@
         </div>
         <div class="input-pair-container">
           <div class="checkbox-input-container">
-            <label for="bookReadRadioButton">Read?</label>
-            <input type="checkbox" name="bookReadRadioButton" id="bookReadRadioButton">
+            <label for="bookReadCheckbox">Read?</label>
+            <input type="checkbox" name="bookReadCheckbox" id="bookReadCheckbox">
           </div>
           <div class="text-input-container">
-            <input type="text" name="bookPageCountField" placeholder=" " id="bookPageCountField" required>
+            <input type="number" min="0" name="bookPageCountField" placeholder=" " id="bookPageCountField" required>
             <label for="bookPageCountField">Pages</label>
           </div>
         </div>

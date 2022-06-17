@@ -8,4 +8,9 @@ export default class LibraryController {
   static addBook(newBookProperties) {
     Library.addBook(newBookProperties);
   }
+
+  static editBook(bookID, newProperties) {
+    console.log("Controller retrieved edit request");
+    Library.editBook(bookID, newProperties);
+  }
 };

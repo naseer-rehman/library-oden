@@ -16,10 +16,6 @@ export default class BookCard {
     const authorLabel = newBookCard.querySelector(".author-name");
     const pageLabel = newBookCard.querySelector(".page-count");
     const finishedCheckbox = newBookCard.querySelector(".finished-checkbox");
-    titleLabel.textContent = book.getTitle();
-    authorLabel.textContent = book.getAuthor();
-    pageLabel.textContent = book.getPageCount();
-    finishedCheckbox.setAttribute("data-value", `${book.hasRead()}`);
     const editButton = newBookCard.querySelector(".edit-button");
     const deleteButton = newBookCard.querySelector(".del-button");
     this.domObject = {
@@ -31,6 +27,7 @@ export default class BookCard {
       pageLabel: pageLabel,
       finishedCheckbox: finishedCheckbox,
     };
+    this.updateInformation();
   }
 
   insertDOM() {
@@ -54,6 +51,11 @@ export default class BookCard {
 
   updateInformation() {
     // To update the BookCard with the current attributes of the Book.
+    const {titleLabel, authorLabel, pageLabel, finishedCheckbox} = this.domObject;
+    titleLabel.textContent = this.book.getTitle();
+    authorLabel.textContent = this.book.getAuthor();
+    pageLabel.textContent = this.book.getPageCount();
+    finishedCheckbox.setAttribute("data-value", `${this.book.hasRead()}`);
   }
 
   getDeleteButton() {

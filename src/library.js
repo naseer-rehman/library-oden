@@ -19,6 +19,10 @@ export default class Library {
   static editBook(bookID, newProperties) {
     const book = Library.bookList.find(book => book.getID() === bookID);
     const {title, author, pageCount, hasRead} = newProperties;
-    // Check to see if any are null I guess idk
+    book.setAuthor(author);
+    book.setTitle(title);
+    book.setPageCount(pageCount);
+    book.setRead(hasRead);
+    LibraryView.updateBook(bookID);
   }
 };
